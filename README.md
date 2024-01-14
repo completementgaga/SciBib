@@ -35,6 +35,6 @@ A basic demo is provided as test/demo.py on the GitHub repository.
 
 
 A complete documentation of the package is provided in pdf 
-[here](https://github.com/completementgaga/npGUI/blob/master/package_manual.pdf),
+[here](https://github.com/completementgaga/SciBib/blob/master/package_manual.pdf),
  the html version is served on 
 [GitHub Pages](https://completementgaga.github.io/SciBib/).
