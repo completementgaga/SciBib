@@ -1,0 +1,346 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Welcome to SciBib’s documentation! &#8212; SciBib 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-scibib-s-documentation">
+<h1>Welcome to SciBib’s documentation!<a class="headerlink" href="#welcome-to-scibib-s-documentation" title="Permalink to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this heading">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+<span class="target" id="module-scibib"></span><section id="the-scibib-package">
+<h2>The SciBib Package<a class="headerlink" href="#the-scibib-package" title="Permalink to this heading">¶</a></h2>
+<p>This package enables scientific bibliographical data recovery from
+an author’s orcid id. The main goal is to collect bibtex entries for
+the authors works and to collect abstracts for theses works.</p>
+<p>Bibtex collection works fine provided the author has an orcid record and
+the sought article is referenced there, see data_query.OrcidWork.bibtex.</p>
+<p>Abstract retrieval can be performed using ArXiv’s API if the article is
+on the Arxiv and the author associated her/his orcid id with her/his arxiv
+account, see data_query.AuthorData.work_summary_from_arxiv.</p>
+<p>Another option is to get a (sometimes more up-to-date) abstract scraping
+the journal’s website. In this case, some legal or technical obstructions
+might appear. However, a tool to try this technique is provided, namely
+the scrape_abstract method of our OrcidWork class.</p>
+<p>Another useful feature is to use the doi of a work to build an url that
+leads to the article in the publisher’s website. This can be obtained
+with OrcidWork.doi.</p>
+<p>Other data sources could be added in the future, depending of the
+users’ suggestions/pull requests.</p>
+</section>
+<span class="target" id="module-scibib.data_query"></span><section id="the-data-query-module">
+<h2>The data_query module<a class="headerlink" href="#the-data-query-module" title="Permalink to this heading">¶</a></h2>
+<p>This module defines two classes that allow to parse author data from
+Orcid and arxiv.
+These are AuthorData and OrcidWork.</p>
+</section>
+<dl class="py class">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scibib.data_query.</span></span><span class="sig-name descname"><span class="pre">OrcidWork</span></span><a class="reference internal" href="_modules/scibib/data_query.html#OrcidWork"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.data_query.OrcidWork" title="Permalink to this definition">¶</a></dt>
+<dd><p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.OrcidWork.__init__" title="scibib.data_query.OrcidWork.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(work_data)</p></td>
+<td><p>Instantiate single work object.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#scibib.data_query.OrcidWork.scrape_abstract" title="scibib.data_query.OrcidWork.scrape_abstract"><code class="xref py py-obj docutils literal notranslate"><span class="pre">scrape_abstract</span></code></a>()</p></td>
+<td><p>Scrape the work's summary from the editor/journal's site.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.OrcidWork.path" title="scibib.data_query.OrcidWork.path"><code class="xref py py-obj docutils literal notranslate"><span class="pre">path</span></code></a></p></td>
+<td><p>Orcid path to the data.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#scibib.data_query.OrcidWork.title" title="scibib.data_query.OrcidWork.title"><code class="xref py py-obj docutils literal notranslate"><span class="pre">title</span></code></a></p></td>
+<td><p>Work title.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.OrcidWork.doi" title="scibib.data_query.OrcidWork.doi"><code class="xref py py-obj docutils literal notranslate"><span class="pre">doi</span></code></a></p></td>
+<td><p>The Work's doi.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#scibib.data_query.OrcidWork.bibtex" title="scibib.data_query.OrcidWork.bibtex"><code class="xref py py-obj docutils literal notranslate"><span class="pre">bibtex</span></code></a></p></td>
+<td><p>Return the bibtex entry for self from source.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">work_data</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scibib/data_query.html#OrcidWork.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.data_query.OrcidWork.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiate single work object.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>work_data</strong> (<em>nested lists/dictionaries</em>) – part of a loaded json
+data corresponding to a single work, as obtained from orcid’s
+API.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork.path">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">path</span></span><a class="headerlink" href="#scibib.data_query.OrcidWork.path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Orcid path to the data.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork.title">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#scibib.data_query.OrcidWork.title" title="Permalink to this definition">¶</a></dt>
+<dd><p>Work title.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork.doi">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">doi</span></span><a class="headerlink" href="#scibib.data_query.OrcidWork.doi" title="Permalink to this definition">¶</a></dt>
+<dd><p>The Work’s doi.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>the doi.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork.bibtex">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bibtex</span></span><a class="headerlink" href="#scibib.data_query.OrcidWork.bibtex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the bibtex entry for self from source.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>source</strong> (<em>str</em><em>, </em><em>optional</em>) – Equals ‘doi’. Defaults to ‘doi’.</p></li>
+<li><p><strong>future.</strong> (<em>Other sources might be available in the</em>) – </p></li>
+</ul>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scibib.data_query.OrcidWork.scrape_abstract">
+<span class="sig-name descname"><span class="pre">scrape_abstract</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/scibib/data_query.html#OrcidWork.scrape_abstract"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.data_query.OrcidWork.scrape_abstract" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scrape the work’s summary from the editor/journal’s site.
+Beware that you might need authorization from the editor/journal to use this functionality.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">scibib.data_query.</span></span><span class="sig-name descname"><span class="pre">AuthorData</span></span><a class="reference internal" href="_modules/scibib/data_query.html#AuthorData"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.data_query.AuthorData" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class to parse Orcid author entries.</p>
+<p><strong>Methods:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.__init__" title="scibib.data_query.AuthorData.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>(orcid_id)</p></td>
+<td><p>Instantiator</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.work_summary_from_arxiv" title="scibib.data_query.AuthorData.work_summary_from_arxiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">work_summary_from_arxiv</span></code></a>(orcid_work)</p></td>
+<td><p>Match work with an arxiv entry to provide a summary.</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Attributes:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.orcid_record" title="scibib.data_query.AuthorData.orcid_record"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orcid_record</span></code></a></p></td>
+<td><p>The raw orcid record as a parsed json.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.arxiv_record" title="scibib.data_query.AuthorData.arxiv_record"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arxiv_record</span></code></a></p></td>
+<td><p>The raw arxiv record as an atom feed.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.articles" title="scibib.data_query.AuthorData.articles"><code class="xref py py-obj docutils literal notranslate"><span class="pre">articles</span></code></a></p></td>
+<td><p>list of article entries in the author's Orcid entry.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.orcid_id_is_on_arxiv" title="scibib.data_query.AuthorData.orcid_id_is_on_arxiv"><code class="xref py py-obj docutils literal notranslate"><span class="pre">orcid_id_is_on_arxiv</span></code></a></p></td>
+<td><p>Check if the author associated his/her Arxiv  with Orcid.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.data_query.AuthorData.arxiv_summaries_dic" title="scibib.data_query.AuthorData.arxiv_summaries_dic"><code class="xref py py-obj docutils literal notranslate"><span class="pre">arxiv_summaries_dic</span></code></a></p></td>
+<td><p>Return dict that maps arxiv_entries -&gt; abstracts for the author.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.__init__">
+<span class="sig-name descname"><span class="pre">__init__</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orcid_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scibib/data_query.html#AuthorData.__init__"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.data_query.AuthorData.__init__" title="Permalink to this definition">¶</a></dt>
+<dd><p>Instantiator</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>orcid_id</strong> (<em>str</em>) – The author’s orcid id</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.orcid_record">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">orcid_record</span></span><a class="headerlink" href="#scibib.data_query.AuthorData.orcid_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>The raw orcid record as a parsed json.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>The raw orcid record as a parsed json (using json.load).</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.arxiv_record">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arxiv_record</span></span><a class="headerlink" href="#scibib.data_query.AuthorData.arxiv_record" title="Permalink to this definition">¶</a></dt>
+<dd><p>The raw arxiv record as an atom feed.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.articles">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">articles</span></span><a class="headerlink" href="#scibib.data_query.AuthorData.articles" title="Permalink to this definition">¶</a></dt>
+<dd><p>list of article entries in the author’s Orcid entry.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>list of article entries, formatted as OrcidWork instances.</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>list[<a class="reference internal" href="#scibib.data_query.OrcidWork" title="scibib.data_query.OrcidWork">OrcidWork</a>]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.orcid_id_is_on_arxiv">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">orcid_id_is_on_arxiv</span></span><a class="headerlink" href="#scibib.data_query.AuthorData.orcid_id_is_on_arxiv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Check if the author associated his/her Arxiv  with Orcid.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>True if yes, False if no!</p>
+</dd>
+<dt class="field-even">Return type<span class="colon">:</span></dt>
+<dd class="field-even"><p>bool</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.arxiv_summaries_dic">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">arxiv_summaries_dic</span></span><a class="headerlink" href="#scibib.data_query.AuthorData.arxiv_summaries_dic" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return dict that maps arxiv_entries -&gt; abstracts for the author.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="scibib.data_query.AuthorData.work_summary_from_arxiv">
+<span class="sig-name descname"><span class="pre">work_summary_from_arxiv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orcid_work</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scibib/data_query.html#AuthorData.work_summary_from_arxiv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.data_query.AuthorData.work_summary_from_arxiv" title="Permalink to this definition">¶</a></dt>
+<dd><p>Match work with an arxiv entry to provide a summary.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>orcid_work</strong> (<a class="reference internal" href="#scibib.data_query.OrcidWork" title="scibib.data_query.OrcidWork"><em>OrcidWork</em></a>) – the work that needs summary.</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>The guessed summary</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>str</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-scibib.abstract_collector"></span><section id="the-abstract-collector-module">
+<h2>The abstract_collector module<a class="headerlink" href="#the-abstract-collector-module" title="Permalink to this heading">¶</a></h2>
+<p>This module defines the main_paragraph function.</p>
+</section>
+<p><strong>Functions:</strong></p>
+<table class="autosummary longtable docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#scibib.abstract_collector.main_paragraph" title="scibib.abstract_collector.main_paragraph"><code class="xref py py-obj docutils literal notranslate"><span class="pre">main_paragraph</span></code></a>(url)</p></td>
+<td><p>From a web page, return the paragraph with the biggest length.</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py function">
+<dt class="sig sig-object py" id="scibib.abstract_collector.main_paragraph">
+<span class="sig-prename descclassname"><span class="pre">scibib.abstract_collector.</span></span><span class="sig-name descname"><span class="pre">main_paragraph</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/scibib/abstract_collector.html#main_paragraph"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#scibib.abstract_collector.main_paragraph" title="Permalink to this definition">¶</a></dt>
+<dd><p>From a web page, return the paragraph with the biggest length.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>url</strong> (<em>str</em>) – the url of the web page to treat.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, Gaël Cousin.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
