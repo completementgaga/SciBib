@@ -2,14 +2,6 @@
 
 A Python package to collect scientific bibliographical data.
 
-## Usage
-A basic demo is provided as test/demo.py.
-
-
-A complete documentation of the package is provided in pdf 
-[here](https://github.com/completementgaga/npGUI/blob/master/sphinx/build/latex/npgui.pdf),
- the html version is served on 
-[GitHub Pages](https://completementgaga.github.io/SciBib/).
 
 ## Installation
 
@@ -30,9 +22,19 @@ Please provide the value for orcid_token in your config file.
 ▯
 ```
 
-If you prefer to edit the file, directly cancel with Ctrl+C, the message in
+If you prefer to edit the file directly, cancel with Ctrl+C. The message in
 an ImportError will tell you which file to edit *e.g.*
 ```
 [...]
 ImportError: Please edit your module configuration file /home/gael/.config/scibib/scibib_config.py to define the orcid_token variable.This token is needed to use orcid's /read-public API.
 ```
+
+
+## Usage
+A basic demo is provided as test/demo.py on the GitHub repository.
+
+
+A complete documentation of the package is provided in pdf 
+[here](https://github.com/completementgaga/npGUI/blob/master/package_manual.pdf),
+ the html version is served on 
+[GitHub Pages](https://completementgaga.github.io/SciBib/).

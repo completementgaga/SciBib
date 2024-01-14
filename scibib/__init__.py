@@ -2,8 +2,8 @@
 ----------------------------------
 The SciBib Package
 ----------------------------------
-This package enables scientific bibliographical data recovery from
-an author's orcid id. The main goal is to collect bibtex entries for
+This package enables scientific bibliographical data retrieval from
+an author's Orcid id. The main goal is to collect bibtex entries for
 the authors works and to collect abstracts for theses works.
 
 
